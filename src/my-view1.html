@@ -46,7 +46,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer({
       is: 'my-view1',
       properties: {
-        responses: { type: Array, notify: true },
+        responses: { type: Array, notify: true, observer: '_onResponsesChanged' },
+      },
+      _onResponsesChanged: function(newValues, oldValues) {
+        console.log("Old values:")
+        console.info(oldValues);
+        console.log("");
+        console.log("New values:")
+        console.info(newValues);
       },
       ready: function() {
         console.info(this.responses);
